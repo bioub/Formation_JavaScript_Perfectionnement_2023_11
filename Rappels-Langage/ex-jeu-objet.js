@@ -44,6 +44,9 @@ class Jeu {
   constructor(options = {}) {
     const min = options.min ?? 0;
     const max = options.max ?? 100;
+
+    // const { min = 0, max = 100 } = options;
+
     this.rl = readline.createInterface({
       input: process.stdin, // le clavier
       output: process.stdout, // le terminal

@@ -1,15 +1,16 @@
-const readline = require('readline');
-const process = require('process');
+import { createInterface } from 'readline';
+import { stdin, stdout } from 'process';
+import { getRandomInt } from './random.js';
 
-class Jeu {
+export class Jeu {
   constructor(options = {}) {
     const min = options.min ?? 0;
     const max = options.max ?? 100;
-    this.rl = readline.createInterface({
-      input: process.stdin, // le clavier
-      output: process.stdout, // le terminal
+    this.rl = createInterface({
+      input: stdin, // le clavier
+      output: stdout, // le terminal
     });
-    this.entierAlea = Random.getRandomInt(min, max);
+    this.entierAlea = getRandomInt(min, max);
     this.essais = [];
   }
   jouer() {
