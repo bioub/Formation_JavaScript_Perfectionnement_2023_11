@@ -20,6 +20,7 @@ function getRandomIntInclusive(min, max) {
 
 // importer l'API readline de node :
 const readline = require('readline');
+const process = require('process');
 
 // configurer readline pour lire sur le clavier
 const rl = readline.createInterface({
@@ -58,3 +59,11 @@ function jouer() {
 const entierAlea = getRandomInt(0, 100);
 const essais = [];
 jouer()
+
+// callstack
+// ^
+// |                                [quest]             [quest]
+// |[quest]                         [jouer]             [jouer]
+// |[jouer] ...                     [task ] ...         [task ] ...
+// +----0-------------------------12ENTREE------------24ENTREE-------------------------------> temps
+// Console :                        Trop petit          Trop grand

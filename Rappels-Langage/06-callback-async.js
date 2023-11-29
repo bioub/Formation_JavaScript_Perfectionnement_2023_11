@@ -9,7 +9,7 @@ console.log('E');
 // ressemble à :
 // do {
 //   executeJSStack()
-// while(thereIsTasks);
+// } while(thereIsTasks);
 
 // callstack
 // ^

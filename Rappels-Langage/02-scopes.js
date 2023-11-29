@@ -1,3 +1,4 @@
+// globalThis ES2020
 globalThis.globalVar = 'globalVar';
 
 // une variable à la racine du fichier
