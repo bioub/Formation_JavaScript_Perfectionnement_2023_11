@@ -39,3 +39,11 @@ formEl.addEventListener('submit', (event) => {
 // Attention : en écoutant le click du bouton moins ici par exemple
 // vous n'aurez plus accès à divEl (naviguez dans l'arbre avec
 // parentElement, children, firstElementChild...)
+divEl.addEventListener('click', (event) => {
+  /** @type {HTMLElement} */
+  const target = event.target;
+
+  if (target.matches('.todo-btn-delete')) {
+    target.closest('.todo-item').remove();
+  }
+})

@@ -41,9 +41,6 @@ export function createTodoItem(todo) {
   const buttonEl = document.createElement('button');
   buttonEl.className = "todo-btn-delete";
   buttonEl.innerText = '-';
-  buttonEl.addEventListener('click', () => {
-    divEl.remove();
-  })
 
   divEl.append(checkboxEl, ' ', spanEl, ' ', buttonEl);
 
