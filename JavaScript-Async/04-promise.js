@@ -1,18 +1,18 @@
 const fs = require('fs/promises')
 
-fs.readFile('.editorconfig', (err, buffer) => {
-  if (err) {
-    console.log(err);
-  } else {
-    fs.writeFile('.editorconfig.copy', buffer, (err) => {
-      if (err) {
-        console.log(err);
-      } else {
-        console.log('Copy done');
-      }
-    });
-  }
-});
+// fs.readFile('.editorconfig', (err, buffer) => {
+//   if (err) {
+//     console.log(err);
+//   } else {
+//     fs.writeFile('.editorconfig.copy', buffer, (err) => {
+//       if (err) {
+//         console.log(err);
+//       } else {
+//         console.log('Copy done');
+//       }
+//     });
+//   }
+// });
 
 // Dans cette version il y a toujours le callback hell
 // fs.readFile('.editorconfig')

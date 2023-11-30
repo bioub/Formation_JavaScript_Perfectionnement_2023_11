@@ -42,8 +42,8 @@ fs.readFile('.editorconfig', (err, buffer) => {
 // callstack
 // ^
 // |
-// |                                          [log ]
-// |[readFile] ...        [writeFile] ...     [task]
+// |                      [writeFile]         [log ]
+// |[readFile] ...        [task] ...          [task]
 // +---------------------------------------------------------> temps
 // Console :
 

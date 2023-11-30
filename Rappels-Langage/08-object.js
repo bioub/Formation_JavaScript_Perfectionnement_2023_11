@@ -8,6 +8,7 @@ console.log(Number instanceof Object); // true
 console.log(Math.sum); // undefined
 Math.sum = (a, b) => a + b;
 console.log(Math.sum(1, 2)); // 3
+// ou via Object.defineProperty si besoin de paramétrer writable et enumerable
 
 delete Math.sum;
 console.log(Math.sum); // undefined
@@ -69,8 +70,12 @@ class Contact {
 const contact = new Contact('Romain');
 console.log(typeof contact); // object
 console.log(contact.name); // Romain
-
 console.log(contact.hello()); // Hello Romain
+
+console.log(contact.name !== undefined); // il est dans l'objet
+console.log(contact.hello !== undefined); // il est dans le prototype
+console.log(contact.hasOwnProperty('name')); // il est dans l'objet
+console.log(contact.hasOwnProperty('hello')); // il n'est pas dans l'objet
 
 // difference String.prototype sur MDN et String.
 
