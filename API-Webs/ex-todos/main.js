@@ -30,3 +30,12 @@ formEl.addEventListener('submit', (event) => {
 // Exercice 3
 // Ecouter le click de la checkbox du form
 // Et cocher ou décocher toutes les autres (celles de todoItem)
+
+// Exercice 5
+// Modifier les exercices 2 et le bonus
+// de façon à écouter les événements au niveau de divEl
+// et vous servir de event.target pour déterminer si le click
+// à eu lieu sur les éléments qui vous intéresse
+// Attention : en écoutant le click du bouton moins ici par exemple
+// vous n'aurez plus accès à divEl (naviguez dans l'arbre avec
+// parentElement, children, firstElementChild...)

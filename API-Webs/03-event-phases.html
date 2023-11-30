@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div {
+      height: 100px;
+      border: 1px solid black;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <button>Click me</button>
+  </div>
+  <script>
+    const phases = {
+      [Event.AT_TARGET]: 'target',
+      [Event.BUBBLING_PHASE]: 'bubbling',
+      [Event.CAPTURING_PHASE]: 'capturing',
+      [Event.NONE]: 'none',
+    }
+
+    const divEl = document.querySelector('div');
+    const buttonEl = document.querySelector('button');
+
+    buttonEl.addEventListener('click', (event) => {
+      console.log('click button', phases[event.eventPhase]);
+    });
+
+    divEl.addEventListener('click', (event) => {
+      //event.stopPropagation();
+      console.log('click div', phases[event.eventPhase]);
+    });
+
+    divEl.addEventListener('click', (event) => {
+      console.log('click div', phases[event.eventPhase]);
+    });
+
+    document.body.addEventListener('click', (event) => {
+      console.log('target', event.target);
+      console.log('currentTarget', event.currentTarget);
+      console.log('click body', phases[event.eventPhase]);
+    });
+
+    document.addEventListener('click', (event) => {
+      console.log('click document', phases[event.eventPhase]);
+    });
+
+    window.addEventListener('click', (event) => {
+      console.log('click window', phases[event.eventPhase]);
+    });
+
+    // Event Delegation
+    // Technique qui permet d'écouter au niveau d'un ancetre
+    // et de savoir sur quel élément on a réellement cliqué
+    document.body.addEventListener('click', (event) => {
+      /** @type {HTMLElement} */
+      const target = event.target;
+
+     // if (target.classList.contains('toto')) {}
+     if (target instanceof HTMLButtonElement) {
+       console.log('click button with event delegation');
+     }
+    })
+  </script>
+</body>
+</html>
