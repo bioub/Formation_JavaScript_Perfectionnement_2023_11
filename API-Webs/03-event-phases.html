@@ -26,7 +26,10 @@
     const divEl = document.querySelector('div');
     const buttonEl = document.querySelector('button');
 
+    let eventFromButton;
+
     buttonEl.addEventListener('click', (event) => {
+      eventFromButton = event;
       console.log('click button', phases[event.eventPhase]);
     });
 
@@ -43,6 +46,10 @@
       console.log('target', event.target);
       console.log('currentTarget', event.currentTarget);
       console.log('click body', phases[event.eventPhase]);
+    });
+
+    document.documentElement.addEventListener('click', (event) => {
+      console.log('click html', phases[event.eventPhase]);
     });
 
     document.addEventListener('click', (event) => {
@@ -65,6 +72,10 @@
        console.log('click button with event delegation');
      }
     })
+
+    setTimeout(() => {
+      console.log(eventFromButton);
+    }, 3000);
   </script>
 </body>
 </html>

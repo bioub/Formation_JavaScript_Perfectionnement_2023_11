@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div {
+      height: 100px;
+      border: 1px solid black;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <input type="text">
+  </div>
+  <script>
+    const divEl = document.querySelector('div');
+
+    // mouseenter/mouseleave ne se propagent pas (il faudrait écouter au niveau de l'input aussi)
+    divEl.addEventListener('mouseenter', (event) => {
+      console.log('mouseenter', event.target);
+    });
+
+    // à la place il faudrait écouter mouseover/mouseout
+    divEl.addEventListener('mouseover', (event) => {
+      console.log('mouseover', event.target);
+    });
+
+    // focus/blur ne se propagent pas
+    divEl.addEventListener('focus', (event) => {
+      console.log('focus', event.target);
+    });
+
+    // à la place il faudrait écouter focusin/focusout
+    divEl.addEventListener('focusin', (event) => {
+      console.log('focusin', event.target);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <form>
+    <input type="text" placeholder="Adresse">
+    <button>Recherche</button>
+  </form>
+  <div>
+
+  </div>
+  <script>
+    const divEl = document.querySelector('div');
+    const formEl = document.querySelector('form');
+    const inputEl = document.querySelector('input');
+
+
+    formEl.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      const res = await fetch('https://api-adresse.data.gouv.fr/search/?q=' + encodeURIComponent(inputEl.value));
+      const data = await res.json();
+
+      divEl.innerText = `Label : ${data.features[0].properties.label}`;
+    })
+
+    </script>
+</body>
+</html>
