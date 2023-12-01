@@ -24,6 +24,12 @@ formEl.addEventListener('submit', (event) => {
     return;
   }
 
+  // Suite de l'exercice
+  // Envoyer une requete POST vers localhost:3000/todos
+  // Avec en body le JSON à stocker (sans l'id)
+  // Recuréper la todo en retour (avec l'id)
+  // et rappeller createTodoItem avec
+
   const todoItemEl = createTodoItem({
     id: Math.random(),
     title: inputEl.value,
@@ -135,7 +141,9 @@ inputEl.addEventListener('input', () => {
   localStorage.setItem('value-todo', inputEl.value);
 });
 
-const res = await fetch('https://jsonplaceholder.typicode.com/todos');
+// const res = await fetch('https://jsonplaceholder.typicode.com/todos');
+
+const res = await fetch('http://localhost:3000/todos');
 const todos = await res.json();
 
 for (const todo of todos.slice(0, 10)) {
