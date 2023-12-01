@@ -17,6 +17,13 @@ const divEl = document.querySelector('.todo-list');
 
 formEl.addEventListener('submit', (event) => {
   event.preventDefault();
+  inputEl.classList.remove('invalid');
+
+  if (!inputEl.value.match(/^[\p{Alphabetic}0-9\- ]+$/u)) {
+    inputEl.classList.add('invalid');
+    return;
+  }
+
   const todoItemEl = createTodoItem({
     id: Math.random(),
     title: inputEl.value,
@@ -107,6 +114,7 @@ window.addEventListener('click', (event) => {
 // Pour chaque todo reçu appeler createTodoItem
 // pour l'afficher (comme dans le submit)
 
+
 // Exercice 7
 // Ecouter l'event "input" du champ de la balise form
 // Stocker la valeur du champ dans localStorage
@@ -119,3 +127,18 @@ window.addEventListener('click', (event) => {
 // ne contiennent que des lettres, chiffres, tirets -, et espace
 // il doit y avoir au moins 1 caractère
 // ne rien faire sinon.
+
+const valueFromStorage = localStorage.getItem('value-todo') ?? '';
+inputEl.value = valueFromStorage;
+
+inputEl.addEventListener('input', () => {
+  localStorage.setItem('value-todo', inputEl.value);
+});
+
+const res = await fetch('https://jsonplaceholder.typicode.com/todos');
+const todos = await res.json();
+
+for (const todo of todos.slice(0, 10)) {
+  const todoItemEl = createTodoItem(todo);
+  divEl.append(todoItemEl);
+}
