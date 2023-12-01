@@ -15,7 +15,7 @@ const inputEl = document.querySelector('.todo-input');
 /** @type {HTMLDivElement} */
 const divEl = document.querySelector('.todo-list');
 
-formEl.addEventListener('submit', (event) => {
+formEl.addEventListener('submit', async (event) => {
   event.preventDefault();
   inputEl.classList.remove('invalid');
 
@@ -29,12 +29,20 @@ formEl.addEventListener('submit', (event) => {
   // Avec en body le JSON à stocker (sans l'id)
   // Recuréper la todo en retour (avec l'id)
   // et rappeller createTodoItem avec
-
-  const todoItemEl = createTodoItem({
-    id: Math.random(),
-    title: inputEl.value,
-    completed: false,
+  const res = await fetch('http://localhost:3000/todos', {
+    method: 'POST',
+    body: JSON.stringify({
+      title: inputEl.value,
+      completed: false,
+    }),
+    headers: {
+      'Content-type': 'application/json'
+    }
   });
+
+  const todo = await res.json();
+
+  const todoItemEl = createTodoItem(todo);
   divEl.prepend(todoItemEl);
   inputEl.value = '';
   inputEl.focus();
